@@ -8,9 +8,9 @@ function VeltInitializeDocument() {
     useEffect(() => {
         setDocuments([
             {
-                id: 'velt-blocknote-crdt-demo-document1-13-aug-2025',
+                id: 'velt-blocknote-crdt-demo-document2-13-aug-2025',
                 metadata: {
-                    documentName: 'Velt BlockNote CRDT Demo Document1 13 Aug 2025',
+                    documentName: 'Velt BlockNote CRDT Demo Document2 13 Aug 2025',
                 }
             }
         ])
