@@ -36,41 +36,6 @@ const BlockNoteCollaborativeEditor: React.FC = () => {
   }
 
   const [veltBlockNoteStoreReady, setVeltBlockNoteStoreReady] = useState(false);
-  const [versionName, setVersionName] = useState('');
-  const [versions, setVersions] = useState<any[]>([]);
-
-  useEffect(() => {
-    console.log('versions', versions);
-  }, [versions]);
-
-  const handleVersionNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVersionName(e.target.value);
-  }
-
-  const handleSaveVersion = () => {
-    if (veltBlockNoteStoreRef.current) {
-      console.log('Saving version', versionName);
-      veltBlockNoteStoreRef.current.getStore().saveVersion(versionName);
-    }
-  }
-
-  const fetchVersions = async () => {
-    if (veltBlockNoteStoreRef.current) {
-      const fetchedVersions = await veltBlockNoteStoreRef.current.getStore().getVersions();
-      setVersions(fetchedVersions);
-    }
-  }
-
-  const handleVersionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const versionId = e.target.value;
-    if (veltBlockNoteStoreRef.current) {
-      const version = versions.find((v) => v.versionId === versionId);
-      if (version) {
-        console.log('Restoring version', versionId);
-        veltBlockNoteStoreRef.current.getStore().setStateFromVersion(version);
-      }
-    }
-  }
 
   // Compute collaboration config (stable object; memoize if needed for perf)
   const collaborationConfig = useMemo(() => {
@@ -97,16 +62,6 @@ const BlockNoteCollaborativeEditor: React.FC = () => {
 
   return (
     <>
-      {/* <div className="version-name-input">
-        <input type="text" placeholder="Enter version name" value={versionName} onChange={handleVersionNameChange} />
-        <button onClick={handleSaveVersion}>Save</button>
-        <button onClick={fetchVersions}>Fetch Versions</button>
-        <select onChange={handleVersionChange}>
-          {versions.map((version) => (
-            <option key={version.versionId} value={version.versionId}>{version.versionName}</option>
-          ))}
-        </select>
-      </div> */}
       <div className="editor-container">
         <div className="editor-header">
           Collaborative Editor - {veltUser?.name ? `Editing as ${veltUser.name}` : 'Please login to start editing'}
