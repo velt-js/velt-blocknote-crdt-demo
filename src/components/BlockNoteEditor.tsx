@@ -27,7 +27,7 @@ const BlockNoteCollaborativeEditor: React.FC = () => {
 
   const initializeStore = async () => {
     const veltBlockNoteStore = await createVeltBlockNoteStore({
-      editorId: 'velt-blocknote-crdt-demo-11-aug-2-default',
+      editorId: 'velt-blocknote-crdt-demo-28-aug-1-default',
       veltClient: client!,
       initialContent: JSON.stringify([{ type: "paragraph", content: "" }]) // BlockNote-compatible initial block
     });
