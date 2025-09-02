@@ -7,7 +7,7 @@ import React from "react";
 
 const BlockNoteCollaborativeEditor: React.FC = () => {
 
-  const { collaborationConfig, veltBlockNoteStoreReady } = useVeltBlockNoteCrdtExtension({
+  const { collaborationConfig, isLoading } = useVeltBlockNoteCrdtExtension({
     editorId: 'velt-blocknote-crdt-demo-28-aug-2-default',
     initialContent: JSON.stringify([{ type: "paragraph", content: "" }])
   });
@@ -25,7 +25,7 @@ const BlockNoteCollaborativeEditor: React.FC = () => {
           <BlockNoteView editor={editor} key={collaborationConfig ? 'collab-on' : 'collab-off'} />
         </div>
         <div className="status">
-          {veltBlockNoteStoreReady ? 'Connected to collaborative session' : 'Connecting to collaborative session...'}
+          {!isLoading ? 'Connected to collaborative session' : 'Connecting to collaborative session...'}
         </div>
       </div>
     </>
